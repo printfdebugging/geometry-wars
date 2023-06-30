@@ -1,33 +1,29 @@
-# Compiler settings
 CXX := g++
-CXXFLAGS := -std=c++17 -Wall -Wextra
+CXXFLAGS := -std=c++17 -Wall -Wextra 
+LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
 
-# Directories
-SRC_DIR := src
-OBJ_DIR := obj
+SRCDIR := ./src
+OBJDIR := ./obj
+BINDIR := .
 
-# Files
-SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
-OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
+SOURCES := $(wildcard $(SRCDIR)/*.cpp)
+OBJECTS := $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SOURCES))
 
-# SFML settings
-SFML_LIBS := -lsfml-graphics -lsfml-window -lsfml-system
+.PHONY: all clean run
 
-# Target executable
-TARGET := gamefile
+all: $(BINDIR)/gamefile
 
-# Makefile rules
-all: $(TARGET)
+$(BINDIR)/gamefile: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
-$(TARGET): $(OBJ_FILES)
-	$(CXX) $(CXXFLAGS) $^ -o $@ $(SFML_LIBS)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
+	rm -f $(OBJECTS) $(BINDIR)/gamefile
 
+run: $(BINDIR)/gamefile
+	./$(BINDIR)/gamefile
+
+
+# -pedantic -Werror

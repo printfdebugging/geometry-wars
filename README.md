@@ -62,5 +62,5 @@
 | Window   | W(width -> int) H(height -> int) FL(frame limit) FS(whether full screen or not)                                                                                                                         |
 | Font     | F(font file link) S(size -> int) R G B(ints)                                                                                                                                                            |
 | Player   | SR(shape radius -> int) CR(collision radius -> int) S(Magniude of the speed -> float) FR FG FB(fill colors -> ints) OR OG OB(outline colors -> ints) OT(outline thickness -> int) V(shape vertices int) |
-| Enemy    | SR CR SMIN SMAX OR OG OB OT VMIN VMAX L(small lifespan -> int) SI(spawn interval int)                                                                                                                   |
-| Bullet   | SR CR FR FG FB OR OG OB OT V L                                                                                                                                                                          |
+| Enemy    | SR CR SMIN SMAX(speed min and max) OR OG OB OT VMIN VMAX(vertex count min max) L(small lifespan -> int) SI(spawn interval int)                                                                          |
+| Bullet   | SR CR S(speed) FR FG FB OR OG OB OT V(shape vertices) L(lifespan)                                                                                                                                       |

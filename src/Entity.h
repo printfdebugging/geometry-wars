@@ -1,29 +1,36 @@
 #pragma once
 
+
 #include "Components.h"
-#include <string>
-#include <iostream>
 #include <memory>
+#include <iostream>
 
 class Entity {
+
     friend class EntityManager;
-    std::string m_tag = "Default";
-    size_t m_id = 0;
-    bool m_active = true;
 
-    // constructor and destructor
-    Entity(const size_t it, const std::string& tag);
+private:
+
+    int                 m_id        = 0;
+    std::string         m_tag       = "default";
+    bool                m_isAlive   = true;
+
+
 public:
-    std::shared_ptr<CTransform>     cTransform;
-    std::shared_ptr<CShape>         cShape;
-    std::shared_ptr<CCollision>     cCollision;
-    std::shared_ptr<CInput>         cInput;
-    std::shared_ptr<CScore>         cScore;
-    std::shared_ptr<CLifespan>      cLifespan;
 
-    bool isActive() const;
+    Entity(const size_t id, const std::string& tag);
+
+    std::shared_ptr<CTransform> cTransform;
+    std::shared_ptr<CShape> cShape;
+    std::shared_ptr<CLifespan> cLifespan;
+    std::shared_ptr<CCollision> cCollision;
+    std::shared_ptr<CScore> cScore;
+    std::shared_ptr<CInput> cInput;
+
+
+    bool isAlive() const;
     const std::string& tag() const;
-    const size_t id() const;
+    size_t id() const;
     void destroy();
 
 };

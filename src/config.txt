@@ -1,0 +1,5 @@
+Window 1500 900 60 0
+Font /home/sahil/Documents/shape-shooter/src/LiberationMono-Bold.ttf 15 255 15 255 
+Player 30 30 6 0 0 0 255 0 0 3 6 
+Enemy 30 30 2 8 255 255 255 2 3 8 90 60
+Bullet 14 14 20  255 255 255 0 0 0 2 20 90
