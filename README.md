@@ -1,5 +1,7 @@
 #### Shape Shooter Game
 
+![Game Image File](./game.png)
+
 ##### Structure of the Program
 
 ##### Specifications

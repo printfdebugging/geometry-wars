@@ -4,7 +4,7 @@
 
 int main() {
 
-    GameEngine g("/home/sahil/Documents/shape-shooter/src/config.txt");
+    GameEngine g("src/config.txt");
     g.run();
     
     
